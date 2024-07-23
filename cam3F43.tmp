@@ -63,7 +63,7 @@ scale = Vector2(5.31334, -28.4513)
 shape = SubResource("RectangleShape2D_hu0ch")
 
 [node name="Area2D" type="Area2D" parent="Pipes"]
-position = Vector2(-3, 3)
+position = Vector2(-3, 5)
 scale = Vector2(4.43251, 5.91406)
 script = ExtResource("5_llwfu")
 
@@ -71,20 +71,3 @@ script = ExtResource("5_llwfu")
 position = Vector2(-0.90242, -0.169087)
 scale = Vector2(0.225606, 0.169089)
 shape = SubResource("RectangleShape2D_2jwis")
-
-[node name="UserInterface" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ScoreLabel" type="Label" parent="UserInterface"]
-layout_mode = 0
-offset_left = -555.0
-offset_top = -292.0
-offset_right = -494.0
-offset_bottom = -269.0
-scale = Vector2(2.76227, 1.94935)
-text = "Score: 0"
-
-[connection signal="body_entered" from="Pipes/Area2D" to="Pipes/Area2D" method="_on_body_entered"]

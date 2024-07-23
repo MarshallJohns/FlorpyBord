@@ -15,3 +15,7 @@ func _input(event):
 			velocity.y += JUMP_POWER
 			
 
+
+
+func _on_area_2d_area_entered(area):
+	print(area.name)

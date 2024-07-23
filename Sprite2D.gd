@@ -6,3 +6,4 @@ var angular_speed = PI
 
 func _process(delta):
 	position.x -= PIPE_SPEED * delta
+ 
