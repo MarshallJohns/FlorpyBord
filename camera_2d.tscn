@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddi13ge6yuf87"]
+
+[ext_resource type="Texture2D" uid="uid://h71tq8yeyl8a" path="res://unitytut-birdbody.png" id="1_36kit"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_fqo8r"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="3_3a2ee"]
+[ext_resource type="Texture2D" uid="uid://dy2fxa8qpvhvl" path="res://unitytut-pipe.png" id="3_uyycq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qf2x"]
+radius = 12.4386
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu0ch"]
+size = Vector2(25.784, 19.2258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jwis"]
+size = Vector2(43, 208)
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2(577, 331)
+
+[node name="Bird" type="CharacterBody2D" parent="."]
+script = ExtResource("2_fqo8r")
+
+[node name="BirdSprite" type="Sprite2D" parent="Bird"]
+position = Vector2(-1, -1)
+scale = Vector2(0.172086, 0.164215)
+texture = ExtResource("1_36kit")
+
+[node name="BirdCollisionShape" type="CollisionShape2D" parent="Bird"]
+position = Vector2(-3, 6)
+scale = Vector2(2.7678, -2.55869)
+shape = SubResource("CircleShape2D_4qf2x")
+
+[node name="Pipes" type="Sprite2D" parent="."]
+position = Vector2(408, -7)
+script = ExtResource("3_3a2ee")
+
+[node name="Pipe" type="StaticBody2D" parent="Pipes"]
+position = Vector2(-8, -380)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes/Pipe"]
+scale = Vector2(0.262172, 0.248006)
+texture = ExtResource("3_uyycq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(5.31334, -28.4513)
+shape = SubResource("RectangleShape2D_hu0ch")
+
+[node name="Pipe2" type="StaticBody2D" parent="Pipes"]
+position = Vector2(-8, 389)
+rotation = 3.14155
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipes/Pipe2"]
+scale = Vector2(0.262172, 0.248006)
+texture = ExtResource("3_uyycq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Pipe2"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(5.31334, -28.4513)
+shape = SubResource("RectangleShape2D_hu0ch")
+
+[node name="Area2D" type="Area2D" parent="Pipes"]
+scale = Vector2(4.43251, 5.91406)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipes/Area2D"]
+position = Vector2(-0.90242, 0.507267)
+scale = Vector2(0.225606, 0.169089)
+shape = SubResource("RectangleShape2D_2jwis")
