@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl7kxv75cbswo"]
+[gd_scene load_steps=5 format=3 uid="uid://cl7kxv75cbswo"]
 
 [ext_resource type="Script" path="res://Sprite2D.gd" id="1_0nukr"]
 [ext_resource type="Texture2D" uid="uid://dy2fxa8qpvhvl" path="res://unitytut-pipe.png" id="2_0qpxd"]
-[ext_resource type="Script" path="res://Area2D.gd" id="3_qjam0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmed"]
 size = Vector2(25.784, 19.2258)
@@ -11,8 +10,9 @@ size = Vector2(25.784, 19.2258)
 size = Vector2(43, 208)
 
 [node name="Pipes" type="Sprite2D" groups=["pipes"]]
-position = Vector2(679, -32)
+position = Vector2(1233, 489)
 script = ExtResource("1_0nukr")
+metadata/_edit_group_ = true
 
 [node name="TopPipe" type="StaticBody2D" parent="."]
 position = Vector2(-8, -380)
@@ -42,9 +42,8 @@ scale = Vector2(5.31334, -28.4513)
 shape = SubResource("RectangleShape2D_dpmed")
 
 [node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(-3, 3)
+position = Vector2(-2.38419e-07, -8)
 scale = Vector2(4.43251, 5.91406)
-script = ExtResource("3_qjam0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(-0.90242, -0.169087)
@@ -54,5 +53,6 @@ shape = SubResource("RectangleShape2D_ilpou")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

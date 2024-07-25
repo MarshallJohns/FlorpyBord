@@ -1,4 +1,5 @@
 extends Sprite2D
+signal point
 
 const PIPE_SPEED = 200
 var velocity = Vector2.ZERO
@@ -11,4 +12,10 @@ func _process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+	pass # Replace with function body.
+
+
+func _on_area_2d_2_body_entered(body):
+	if body.name == "Bird":
+		point.emit()
 	pass # Replace with function body.
