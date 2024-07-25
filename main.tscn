@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcvo12tp5j076"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_3r4d1"]
+[ext_resource type="PackedScene" uid="uid://wusush6nyn0n" path="res://bird.tscn" id="1_d4x6a"]
+[ext_resource type="PackedScene" uid="uid://cl7kxv75cbswo" path="res://pipes.tscn" id="2_knksm"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_3r4d1")
+pipes_scene = ExtResource("2_knksm")
+
+[node name="Bird" parent="." instance=ExtResource("1_d4x6a")]
+position = Vector2(564, 311)
+metadata/_edit_group_ = true
+
+[node name="PipeSpawner" type="Marker2D" parent="."]
+position = Vector2(1300, 311)
+
+[node name="PipeSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="PipeSpawnTimer" to="." method="_on_pipe_spawn_timer_timeout"]
