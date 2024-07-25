@@ -13,9 +13,7 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_SPACE:
 			velocity.y += JUMP_POWER
+			$Wing.play()
+			$Wing.stop()
 			
 
-
-
-func _on_area_2d_area_entered(area):
-	print(area.name)

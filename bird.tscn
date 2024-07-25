@@ -35,7 +35,7 @@ position = Vector2(-3, 6)
 scale = Vector2(2.7678, -2.55869)
 shape = SubResource("CircleShape2D_oopc7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Wing" type="AnimatedSprite2D" parent="."]
 position = Vector2(-45, 7)
 scale = Vector2(0.164, 0.164)
 sprite_frames = SubResource("SpriteFrames_ou0ij")

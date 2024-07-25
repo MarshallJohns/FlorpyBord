@@ -7,7 +7,6 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(self)
 	$PipeSpawnTimer.start()
 	get_tree().call_group("pipes", "queue_free")
 	pass # Replace with function body.
@@ -15,8 +14,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	pass
 
+func add_score(points):
+	score += points
+	$HUD.update_score(score)   
+	
 
 func _on_pipe_spawn_timer_timeout():
 	var top = 144.0
@@ -25,6 +29,8 @@ func _on_pipe_spawn_timer_timeout():
 	var spawn_point = $PipeSpawner.position
 	var pipes = pipes_scene.instantiate()
 	pipes.position.y = random_y
+	pipes.point.connect(func() : add_score(1))
 	add_child(pipes)
-	#pipes.connect("point", self, "_on_pipes_point")
 	pass # Replace with function body.
+	
+
