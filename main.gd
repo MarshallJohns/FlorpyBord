@@ -11,7 +11,6 @@ func _ready():
 	get_tree().call_group("pipes", "queue_free")
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
@@ -21,6 +20,9 @@ func add_score(points):
 	score += points
 	$HUD.update_score(score)   
 	
+func game_over():
+	$Bird.stop_game(true)
+	pass
 
 func _on_pipe_spawn_timer_timeout():
 	var top = 144.0
@@ -30,6 +32,7 @@ func _on_pipe_spawn_timer_timeout():
 	var pipes = pipes_scene.instantiate()
 	pipes.position.y = random_y
 	pipes.point.connect(func() : add_score(1))
+	pipes.game_over.connect(func() : game_over())
 	add_child(pipes)
 	pass # Replace with function body.
 	

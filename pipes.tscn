@@ -3,18 +3,46 @@
 [ext_resource type="Script" path="res://Sprite2D.gd" id="1_0nukr"]
 [ext_resource type="Texture2D" uid="uid://dy2fxa8qpvhvl" path="res://unitytut-pipe.png" id="2_0qpxd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmed"]
-size = Vector2(25.784, 19.2258)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilpou"]
 size = Vector2(43, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmed"]
+size = Vector2(25.784, 19.2258)
 
 [node name="Pipes" type="Sprite2D" groups=["pipes"]]
 position = Vector2(1233, 489)
 script = ExtResource("1_0nukr")
 metadata/_edit_group_ = true
 
-[node name="TopPipe" type="StaticBody2D" parent="."]
+[node name="PointZone" type="Area2D" parent="."]
+position = Vector2(-2.38419e-07, -8)
+scale = Vector2(4.43251, 5.91406)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointZone"]
+position = Vector2(-0.90242, -0.169087)
+scale = Vector2(0.225606, 0.169089)
+shape = SubResource("RectangleShape2D_ilpou")
+
+[node name="BottomPipe" type="Area2D" parent="."]
+position = Vector2(-8, 389)
+rotation = 3.14155
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(5.31334, -28.4513)
+shape = SubResource("RectangleShape2D_dpmed")
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomPipe/CollisionShape2D"]
+position = Vector2(0, 0.0702972)
+rotation = -3.14159
+scale = Vector2(0.0493422, -0.00871686)
+skew = 1.3113e-05
+texture = ExtResource("2_0qpxd")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="TopPipe" type="Area2D" parent="."]
 position = Vector2(-8, -380)
 
 [node name="Sprite2D" type="Sprite2D" parent="TopPipe"]
@@ -27,31 +55,8 @@ rotation = -3.14159
 scale = Vector2(5.31334, -28.4513)
 shape = SubResource("RectangleShape2D_dpmed")
 
-[node name="BottomPipe" type="StaticBody2D" parent="."]
-position = Vector2(-8, 389)
-rotation = 3.14155
-
-[node name="Sprite2D" type="Sprite2D" parent="BottomPipe"]
-scale = Vector2(0.262172, 0.248006)
-texture = ExtResource("2_0qpxd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe"]
-position = Vector2(0, -2)
-rotation = -3.14159
-scale = Vector2(5.31334, -28.4513)
-shape = SubResource("RectangleShape2D_dpmed")
-
-[node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(-2.38419e-07, -8)
-scale = Vector2(4.43251, 5.91406)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(-0.90242, -0.169087)
-scale = Vector2(0.225606, 0.169089)
-shape = SubResource("RectangleShape2D_ilpou")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="PointZone" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="PointZone" to="PointZone" method="_on_body_entered"]
+[connection signal="body_entered" from="BottomPipe" to="." method="_on_pipe_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="TopPipe" to="." method="_on_pipe_body_entered"]
