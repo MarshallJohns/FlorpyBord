@@ -13,7 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	pass
 
 func add_score(points):
@@ -21,6 +20,7 @@ func add_score(points):
 	$HUD.update_score(score)   
 	
 func game_over():
+	$Bird.hide()
 	$Bird.stop_game(true)
 	pass
 

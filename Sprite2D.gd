@@ -23,7 +23,6 @@ func _on_area_2d_2_body_entered(body):
 
 
 func _on_pipe_body_entered(body):
-	print("hit")
 	if body.name == "Bird":
 		game_over.emit()
 	pass # Replace with function body.

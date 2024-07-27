@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dy2fxa8qpvhvl" path="res://unitytut-pipe.png" id="2_0qpxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilpou"]
-size = Vector2(43, 208)
+size = Vector2(35.0004, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpmed"]
 size = Vector2(25.784, 19.2258)
@@ -12,14 +12,13 @@ size = Vector2(25.784, 19.2258)
 [node name="Pipes" type="Sprite2D" groups=["pipes"]]
 position = Vector2(1233, 489)
 script = ExtResource("1_0nukr")
-metadata/_edit_group_ = true
 
 [node name="PointZone" type="Area2D" parent="."]
 position = Vector2(-2.38419e-07, -8)
 scale = Vector2(4.43251, 5.91406)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PointZone"]
-position = Vector2(-0.90242, -0.169087)
+position = Vector2(-1.35364, 1.85997)
 scale = Vector2(0.225606, 0.169089)
 shape = SubResource("RectangleShape2D_ilpou")
 
@@ -27,18 +26,18 @@ shape = SubResource("RectangleShape2D_ilpou")
 position = Vector2(-8, 389)
 rotation = 3.14155
 
+[node name="Sprite2D" type="Sprite2D" parent="BottomPipe"]
+position = Vector2(0, 6.10352e-05)
+rotation = -1.10399e-05
+scale = Vector2(0.262172, 0.248006)
+skew = 1.06096e-05
+texture = ExtResource("2_0qpxd")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe"]
 position = Vector2(0, -2)
 rotation = -3.14159
 scale = Vector2(5.31334, -28.4513)
 shape = SubResource("RectangleShape2D_dpmed")
-
-[node name="Sprite2D" type="Sprite2D" parent="BottomPipe/CollisionShape2D"]
-position = Vector2(0, 0.0702972)
-rotation = -3.14159
-scale = Vector2(0.0493422, -0.00871686)
-skew = 1.3113e-05
-texture = ExtResource("2_0qpxd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

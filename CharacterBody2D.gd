@@ -11,7 +11,8 @@ func _physics_process(delta):
 	move_and_collide(motion)
 
 func stop_game(value):
-	game_over = value
+	queue_free()
+	
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_SPACE && !game_over:
